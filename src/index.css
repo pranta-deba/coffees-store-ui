@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.raleway {
+    font-family: "Raleway", sans-serif;
+}
+
+.rancho {
+    font-family: "Rancho", cursive;
+}
+
+.header-bg {
+    background: url("/src/assets/headerbg.png") lightgray 50% / cover no-repeat;
+}
+
+.banner-bg {
+    background: url("/src/assets/more/3.png") lightgray 50% / cover no-repeat;
+}
+.products-bg{
+    background: url("/src/assets/more/1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.footer-bg{
+    background: url("/src/assets/more/13.jpg") lightgray 50% / cover no-repeat;
+}
+.footer-bg2{
+    background: url("/src/assets/more/24.jpg") lightgray 50% / cover no-repeat;
+}
