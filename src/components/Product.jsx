@@ -2,9 +2,13 @@ import { FaEye } from "react-icons/fa";
 import { MdDelete, MdOutlineModeEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { TiShoppingCart } from "react-icons/ti";
 
 
-const Product = ({ coffee, handleDelete }) => {
+const Product = ({ coffee, handleDelete, handleCart }) => {
+  const { role } = useContext(AuthContext);
   const { _id: id, coffeeName, chef, photoURL, price } = coffee || {};
 
   return (
@@ -26,15 +30,18 @@ const Product = ({ coffee, handleDelete }) => {
           <span className="text-[#5C5B5BE6]"> {price} Taka</span>
         </p>
       </div>
-      <div className="flex flex-row md:flex-col gap-5 m-11">
+      <div className="flex flex-row md:flex-col gap-3 m-11">
         <Link to={`/details/${id}`} className="p-2 text-white bg-[#D2B48C] rounded-md">
           <FaEye />
         </Link>
-        <Link to={`/update-coffee/${id}`} className="p-2 text-white bg-[#3C393B;] rounded-md">
+        {role && <><Link to={`/update-coffee/${id}`} className="p-2 text-white bg-[#3C393B;] rounded-md">
           <MdOutlineModeEdit />
         </Link>
-        <button onClick={() => handleDelete(id)} className="p-2 text-white bg-[#EA4744] rounded-md">
-          <MdDelete />
+          <button onClick={() => handleDelete(id)} className="p-2 text-white bg-[#EA4744] rounded-md">
+            <MdDelete />
+          </button></>}
+        <button onClick={() => handleCart(coffee)} className="p-2 text-white bg-[#ef17d2] rounded-md">
+          <TiShoppingCart />
         </button>
       </div>
     </div>
@@ -44,5 +51,6 @@ const Product = ({ coffee, handleDelete }) => {
 Product.propTypes = {
   coffee: PropTypes.object.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleCart: PropTypes.func.isRequired,
 };
 export default Product;
